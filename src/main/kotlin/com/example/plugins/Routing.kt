@@ -5,34 +5,21 @@ import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.response.*
 import io.ktor.server.request.*
+import io.ktor.server.html.*
+import kotlinx.html.body
+import kotlinx.html.h1
 
 fun Application.configureRouting() {
 
-    // Starting point for a Ktor app:
+    var count = 1
     routing {
         get("/") {
-            call.respondText("Hello Ktor!")
-        }
-        route("programming-languages") {
-            get("Kotlin") {
-                call.respondText("Hello Kotlin!")
-            }
-        }
-        route("users") {
-            get("{userId}") {
-                val userId = call.parameters["userId"]!!.toLong()
-                call.respondText("get user[id = $userId]")
-            }
-            post {
-                call.respondText("create users")
-            }
-            put("{userId}") {
-                val userId = call.parameters["userId"]!!.toLong()
-                call.respondText("update user[id =$userId")
-            }
-            delete("{userId}") {
-                val userId = call.parameters["userId"]!!.toLong()
-                call.respondText("delete user[id = $userId")
+            call.respondHtml(HttpStatusCode.OK) {
+                body {
+                    h1 {
+                        +"Hello Ktor!! あなたは${count++}人目の来訪者です"
+                    }
+                }
             }
         }
     }

@@ -29,4 +29,6 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     implementation("io.ktor:ktor-server-content-negotiation:$ktor_version") // KtorのContentNegotiationプラグイン
     implementation("io.ktor:ktor-serialization-gson:$ktor_version") // JSONパースライブラリ
+    implementation("io.ktor:ktor-server-html-builder:$ktor_version")
+    implementation("io.ktor:ktor-server-default-headers:$ktor_version")
 }
